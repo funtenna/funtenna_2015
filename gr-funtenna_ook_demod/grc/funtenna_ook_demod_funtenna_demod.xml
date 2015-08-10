@@ -1,0 +1,21 @@
+<block>
+  <name>Funtenna demod</name>
+  <key>funtenna_ook_demod_funtenna_demod</key>
+  <category>FUNTENNA_OOK_DEMOD</category>
+  <import>import funtenna_ook_demod</import>
+  <make>funtenna_ook_demod.funtenna_demod($samp_thresh)</make>
+  <callback>set_thresh($samp_thresh)</callback>
+  <param>
+    <name>Samp_thresh</name>
+    <key>samp_thresh</key>
+    <type>int</type>
+  </param>
+  <sink>
+    <name>in</name>
+    <type>float</type>
+  </sink>
+  <source>
+    <name>out</name>
+    <type>byte</type>
+  </source>
+</block>

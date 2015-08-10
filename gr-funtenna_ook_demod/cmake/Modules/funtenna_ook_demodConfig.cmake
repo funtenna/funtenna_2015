@@ -1,0 +1,30 @@
+INCLUDE(FindPkgConfig)
+PKG_CHECK_MODULES(PC_FUNTENNA_OOK_DEMOD funtenna_ook_demod)
+
+FIND_PATH(
+    FUNTENNA_OOK_DEMOD_INCLUDE_DIRS
+    NAMES funtenna_ook_demod/api.h
+    HINTS $ENV{FUNTENNA_OOK_DEMOD_DIR}/include
+        ${PC_FUNTENNA_OOK_DEMOD_INCLUDEDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/include
+          /usr/local/include
+          /usr/include
+)
+
+FIND_LIBRARY(
+    FUNTENNA_OOK_DEMOD_LIBRARIES
+    NAMES gnuradio-funtenna_ook_demod
+    HINTS $ENV{FUNTENNA_OOK_DEMOD_DIR}/lib
+        ${PC_FUNTENNA_OOK_DEMOD_LIBDIR}
+    PATHS ${CMAKE_INSTALL_PREFIX}/lib
+          ${CMAKE_INSTALL_PREFIX}/lib64
+          /usr/local/lib
+          /usr/local/lib64
+          /usr/lib
+          /usr/lib64
+)
+
+INCLUDE(FindPackageHandleStandardArgs)
+FIND_PACKAGE_HANDLE_STANDARD_ARGS(FUNTENNA_OOK_DEMOD DEFAULT_MSG FUNTENNA_OOK_DEMOD_LIBRARIES FUNTENNA_OOK_DEMOD_INCLUDE_DIRS)
+MARK_AS_ADVANCED(FUNTENNA_OOK_DEMOD_LIBRARIES FUNTENNA_OOK_DEMOD_INCLUDE_DIRS)
+
